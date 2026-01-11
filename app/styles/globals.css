@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --color-background-primary: #e8f5ff;
+  --color-background-secondary: #c8e6c9;
+  --color-main-accent: #ffb300;
+  --color-main-txt: #212121;
+  --color-status-good: #2ecc71;
+  --color-status-danger: #f1c40f;
+  --color-status-critical: #c62828;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #0b1428;
+    --color-background-secondary: #1e2a44;
+    --color-main-accent: #00d4ff;
+    --color-main-txt: #e0f7ff;
+  }
+}
+
+@theme inline {
+  --color-primary: var(--color-background-primary);
+  --color-secondary: var(--color-background-secondary);
+  --color-accent: var(--color-main-accent);
+  --color-txt: var(--color-main-txt);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  @keyframes progress-slide {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Create the utility variable */
+  --animate-sao-load: progress-slide 3s ease-in-out infinite;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
