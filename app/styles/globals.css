@@ -5,6 +5,11 @@
   --color-background-secondary: #c8e6c9;
   --color-main-accent: #ffb300;
   --color-main-txt: #212121;
+
+  --color-status-failed: #ff4b4b;
+  --color-status-ongoing: #f1c40f;
+  --color-status-completed: #649de9;
+
   --color-status-good: #2ecc71;
   --color-status-danger: #f1c40f;
   --color-status-critical: #c62828;
@@ -36,7 +41,6 @@
     }
   }
 
-  /* Create the utility variable */
   --animate-sao-load: progress-slide 3s ease-in-out infinite;
 }
 

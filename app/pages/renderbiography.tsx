@@ -19,10 +19,10 @@ export default function RenderBio() {
 
       <div className="grid md:grid-cols-2 gap-4 mt-12">
         {[
-          { label: "Strength", value: "98/100", desc: "React Frameworks" },
-          { label: "Agility", value: "95/100", desc: "UI Performance" },
-          { label: "Intelligence", value: "92/100", desc: "Problem Solving" },
-          { label: "Luck", value: "88/100", desc: "Edge Cases" },
+          { label: "Strength", value: "28/100", desc: "React Frameworks" },
+          { label: "Agility", value: "25/100", desc: "UI Performance" },
+          { label: "Intelligence", value: "22/100", desc: "Problem Solving" },
+          { label: "Luck", value: "28/100", desc: "Edge Cases" },
         ].map((stat, i) => (
           <div
             key={i}

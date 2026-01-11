@@ -1,6 +1,12 @@
 import { ChevronRight } from "lucide-react";
 
 export default function RenderQuest() {
+  const statusConfig: Record<string, string> = {
+    Completed: "bg-(--color-status-completed) shadow-[0_0_8px_#649de9]",
+    Ongoing: "bg-(--color-status-ongoing) shadow-[0_0_8px_#f1c40f] animate-pulse",
+    Failed: "bg-(--color-status-failed) shadow-[0_0_8px_#ff4b4b]",
+  };
+
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="flex items-center gap-3 mb-8">
@@ -11,21 +17,10 @@ export default function RenderQuest() {
       </div>
       <div className="grid gap-6">
         {[
-          {
-            title: "Project: Aincrad Dashboard",
-            status: "Completed",
-            date: "2024",
-          },
-          {
-            title: "Digital World Overhaul",
-            status: "Active",
-            date: "Present",
-          },
-          {
-            title: "Link Start Auth Protocol",
-            status: "Completed",
-            date: "2023",
-          },
+          { title: "Personal Portfolio", status: "Ongoing", date: "2024" },
+          { title: "FishPrawn", status: "Ongoing", date: "Present" },
+          { title: "MSC Capstone E-Clearance", status: "Completed", date: "2023" },
+          { title: "Tree Swipe Project", status: "Failed", date: "2022" }, 
         ].map((quest, i) => (
           <div
             key={i}
@@ -33,10 +28,8 @@ export default function RenderQuest() {
           >
             <div className="flex items-center gap-4">
               <div
-                className={`w-3 h-3 rounded-full ${
-                  quest.status === "Completed"
-                    ? "bg-blue-500 shadow-[0_0_8px_#3b82f6]"
-                    : "bg-yellow-500 shadow-[0_0_8px_#eab308]"
+                className={`w-3 h-3 rounded-full transition-all ${
+                  statusConfig[quest.status] || "bg-slate-500"
                 }`}
               ></div>
               <div>
