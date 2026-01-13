@@ -79,7 +79,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
             <div className="bg-black/40 p-3 rounded border border-white/5">
               <div className="text-[10px] text-slate-500 uppercase">Server</div>
               <div className="text-xl font-bold text-blue-400 tracking-tighter">
-                Eerth
+                Pilipins
               </div>
             </div>
           </div>
