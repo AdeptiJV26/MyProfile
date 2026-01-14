@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --color-background-primary: #e8f5ff;
-  --color-background-secondary: #c8e6c9;
-  --color-main-accent: #ffb300;
-  --color-main-txt: #212121;
+  --color-bg-primary: #e8f5ff;
+  --color-bg-secondary: #c8e6c9;
+  --color-accent: #ffb300;
+  --color-txt: #212121;
+  --color-titles: #000000;
+  --color-borders: #ce1111;
+  --color-highlight: #5df8eb;
 
   --color-status-failed: #ff4b4b;
   --color-status-ongoing: #f1c40f;
@@ -15,20 +18,25 @@
   --color-status-critical: #c62828;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background-primary: #0b1428;
-    --color-background-secondary: #1e2a44;
-    --color-main-accent: #00d4ff;
-    --color-main-txt: #e0f7ff;
-  }
+.dark {
+  --color-bg-primary: #0b1428;
+  --color-bg-secondary: #1e2a44;
+  --color-accent: #00d4ff;
+  --color-txt: #e0f7ff;
+  --color-titles: #ffffff;
+  --color-borders: #ced6db;
+  --color-highlight: #5df8eb;
 }
 
 @theme inline {
-  --color-primary: var(--color-background-primary);
-  --color-secondary: var(--color-background-secondary);
-  --color-accent: var(--color-main-accent);
-  --color-txt: var(--color-main-txt);
+  --color-primary: var(--color-bg-primary);
+  --color-secondary: var(--color-bg-secondary);
+  --color-accent: var(--color-accent);
+  --color-txt-primary: var(--color-txt);
+  --color-text-titles: var(--color-titles);
+  --color-borders: var(--color-borders);
+  --color-highlight: var(--color-highlight);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 

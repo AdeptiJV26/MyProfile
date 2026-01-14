@@ -7,8 +7,6 @@ export default function Initializer({ tabName }: { tabName: string }) {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      // Changed items-center to pt-[200px] (or any fixed distance) 
-      // to keep it at the top regardless of total container height
       className="absolute inset-0 z-10 bg-[#0a0a0c] flex flex-col items-center pt-[150px] font-mono pointer-events-none"
     >
       <div className="w-48 h-1 bg-gray-800 rounded-full overflow-hidden mb-2 border border-blue-500/20">

@@ -1,9 +1,10 @@
+import { BicepsFlexed, Zap, Brain, Clover } from "lucide-react";
 
 export default function RenderBio() {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="flex items-center gap-3 mb-8">
-        <div className="h-8 w-1 bg-blue-500"></div>
+        <div className="h-8 w-1 bg-borders"></div>
         <h3 className="text-xl font-bold uppercase tracking-[0.3em]">
           Player Biography
         </h3>
@@ -19,23 +20,45 @@ export default function RenderBio() {
 
       <div className="grid md:grid-cols-2 gap-4 mt-12">
         {[
-          { label: "Strength", value: "28/100", desc: "React Frameworks" },
-          { label: "Agility", value: "25/100", desc: "UI Performance" },
-          { label: "Intelligence", value: "22/100", desc: "Problem Solving" },
-          { label: "Luck", value: "28/100", desc: "Edge Cases" },
+          {
+            icon: BicepsFlexed,
+            label: "Strength",
+            value: "28/100",
+            desc: "React Frameworks",
+          },
+          {
+            icon: Zap,
+            label: "Agility",
+            value: "25/100",
+            desc: "UI Performance",
+          },
+          {
+            icon: Brain,
+            label: "Intelligence",
+            value: "22/100",
+            desc: "Problem Solving",
+          },
+          { icon: Clover, label: "Luck", value: "28/100", desc: "Edge Cases" },
         ].map((stat, i) => (
           <div
             key={i}
-            className="flex items-center justify-between p-4 border border-white/5 bg-black/20 rounded-lg group hover:border-blue-500/50 transition-colors"
+            className="flex items-center justify-between p-4 border border-white/5 bg-primary rounded-lg group hover:border-accent transition-colors"
           >
-            <div>
-              <div className="text-xs text-slate-500 uppercase">
-                {stat.label}
+            <div className="flex">
+              <div className="grid grid-cols-9 gap-4">
+                <div className="col-span-2 flex items-center justify-center">
+                  <stat.icon size={20} className="text-main-txt shrink-0 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--color-highlight)]" />
+                </div>
+                <div className="col-span-5 flex flex-col justify-center items-start">
+                  <div className="text-sm text-highlight font-bold uppercase">
+                    {stat.label}
+                  </div>
+                  <div className="text-xs text-txt-primary font-semibold">{stat.desc}</div>
+                </div>
+                <div className="col-span-2 flex justify-center items-center text-sm text-txt-primary">
+                  {stat.value}
+                </div>
               </div>
-              <div className="text-sm font-semibold">{stat.desc}</div>
-            </div>
-            <div className="text-xl font-black text-blue-500 italic">
-              {stat.value}
             </div>
           </div>
         ))}

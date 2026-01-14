@@ -17,7 +17,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
 
   return (
     <div className="lg:col-span-4 space-y-6">
-      <div className="bg-[#15151a]/80 border border-white/10 rounded-xl p-6 relative overflow-hidden group">
+      <div className="bg-primary/80 border border-white/10 rounded-xl p-6 relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
           <Circle size={40} className="text-blue-500" />
         </div>
@@ -79,14 +79,14 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
             <div className="bg-black/40 p-3 rounded border border-white/5">
               <div className="text-[10px] text-slate-500 uppercase">Server</div>
               <div className="text-xl font-bold text-blue-400 tracking-tighter">
-                Pilipins
+                LBRDC
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-[#15151a]/80 border border-white/10 rounded-xl p-4 flex gap-4 overflow-x-auto">
+      <div className="bg-primary/80 border border-white/10 rounded-xl p-4 flex gap-4 overflow-x-auto">
         {[Shield, Layers, Mail].map((Icon, idx) => (
           <button
             key={idx}

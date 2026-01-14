@@ -6,6 +6,7 @@ import RenderSkills from "./pages/renderskills";
 import RenderQuest from "./pages/renderquest";
 import RenderBio from "./pages/renderbiography";
 import RenderSupport from "./pages/rendersupport";
+import RenderSettings from "./pages/rendersettings"
 import Footer from "./templates/footer";
 import Navbar from "./templates/navbar";
 import Initializer from "./components/initializer";
@@ -26,11 +27,13 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-slate-200 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-primary text-slate-200 selection:bg-blue-500/30">
+      {/* Background Dot Dot */}
       <div
-        className="fixed inset-0 opacity-10 pointer-events-none"
+        className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(#3b82f6 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(var(--color-main-accent) 1px, transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
@@ -42,7 +45,7 @@ const App = () => {
           <ProfileCard hp={hp} />
 
           <div className="lg:col-span-8">
-            <div className="relative bg-[#15151a]/80 border border-white/10 rounded-xl p-8 min-h-[500px] overflow-hidden">
+            <div className="relative bg-secondary/80 border border-white/10 rounded-xl p-8 min-h-125s overflow-hidden">
               <Initializer key={`load-${activeTab}`} tabName={activeTab} />
 
               <motion.div
@@ -52,7 +55,7 @@ const App = () => {
                 exit={{ opacity: 0, scaleY: 0 }}
                 transition={{
                   duration: 0.4,
-                  delay: 0.5, 
+                  delay: 0.5,
                   ease: [0.23, 1, 0.32, 1],
                 }}
                 className="p-8"
@@ -61,6 +64,7 @@ const App = () => {
                 {activeTab === "skills" && <RenderSkills />}
                 {activeTab === "quests" && <RenderQuest />}
                 {activeTab === "message" && <RenderSupport />}
+                {activeTab === "settings" && <RenderSettings />}
               </motion.div>
             </div>
           </div>
