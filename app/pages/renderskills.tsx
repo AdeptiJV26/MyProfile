@@ -1,85 +1,49 @@
-import {
-  Sword,
-  Shield,
-  Terminal,
-  Zap,
-  Palette,
-  Flame,
-  Sparkles,
-} from "lucide-react";
+import * as Icons from "lucide-react";
+import { supabase } from "../lib/supabase";
+import React, { useState, useEffect } from "react";
+
+interface Skill {
+  name: string;
+  level: string;
+  icon: string;
+  skill_type: string;
+  skill_desc: string;
+}
 
 export default function RenderSkills() {
-  const skills = [
-    {
-      name: "Next.js & React",
-      level: "19%",
-      type: "Runtime Skill",
-      icon: <Zap size={20} />,
-      desc: "Instant Transmission of components. Re-renders faster than Kirito's dual-wielding.",
-    },
-    {
-      name: "TypeScript",
-      level: "12%",
-      type: "Passive Parser",
-      icon: <Shield size={20} />,
-      desc: "Auto-deflects 'undefined is not a function' before they hit your HP bar.",
-    },
-    {
-      name: "Tailwind CSS",
-      level: "18%",
-      type: "Runtime Skill",
-      icon: <Sword size={20} />,
-      desc: "Speed-running UI design. No CSS files, no survivors.",
-    },
-    {
-      name: "Git & Deployment",
-      level: "100%",
-      type: "Ultimate Skill",
-      icon: <Flame size={20} />,
-      desc: "Attempting a git reset --hard to a version from 6 months ago without a backup.",
-    },
-    {
-      name: "Node.js",
-      level: "25%",
-      type: "System Support",
-      icon: <Terminal size={20} />,
-      desc: "The backbone of the Aincrad server. Occasionally leaks memory like a glitchy floor boss.",
-    },
-    {
-      name: "Figma",
-      level: "11%",
-      type: "Visual Unique",
-      icon: <Palette size={20} />,
-      desc: "Where the 'Vision' is crafted before the developers inevitably nerf it.",
-    },
-    {
-      name: "Vibe Coding",
-      level: "100%",
-      type: "Divine Manifestation",
-      icon: <Sparkles size={20} />,
-      desc: "An Illegal Skill that bypasses the Aincrad System's source code. You don't debug errors; you simply gaslight the compiler until it apologizes and executes the 'intended' logic.",
-    },
-  ];
+  const [skills, setSkills] = useState<Skill[]>([]);
 
-  const sortedSkills = [...skills].sort((a, b) => {
-    const lvlA = parseInt(a.level) || 0;
-    const lvlB = parseInt(b.level) || 0;
-    return lvlA - lvlB; // Change to lvlA - lvlB for Ascending
-  });
+  useEffect(() => {
+    const fetchSkills = async () => {
+      const { data } = await supabase
+        .from("skills")
+        .select("*")
+        .returns<Skill[]>(); // 2. Tell TS to expect Skill array
+      if (data) {
+        const sortedData = [...data].sort((a, b) => 
+          parseInt(a.level .replace("%", "")) - parseInt(b.level.replace("%", "")));
+        setSkills(sortedData);
+      }
+    };
+    fetchSkills();
+  }, []);
 
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 pb-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="h-8 w-1 bg-blue-500 shadow-[0_0_8px_#3b82f6]"></div>
+        <div className="h-8 w-1 bg-primary shadow-[0_0_8px_#3b82f6]"></div>
         <h3 className="text-xl font-bold uppercase tracking-[0.3em] text-slate-100">
           Skill Slots
         </h3>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
-        {sortedSkills.map((skill, i) => {
-          const isUltimate = skill.type === "Ultimate Skill";
-          const isDivine = skill.type === "Divine Manifestation";
+        {skills.map((skill, i) => {
+          const IconComponent =
+            (Icons[skill.icon as keyof typeof Icons] as React.ElementType) ||
+            Icons.HelpCircle;
+          const isUltimate = skill.skill_type === "Ultimate Skill";
+          const isDivine = skill.skill_type === "Divine Manifestation";
 
           return (
             <div
@@ -88,10 +52,8 @@ export default function RenderSkills() {
                 isDivine ? "shadow-[0_0_20px_rgba(168,85,247,0.4)]" : ""
               }`}
             >
-              {/*  Glowing Border  */}
               <div
-                className={`absolute inset-[-1000%] animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                ${
+                className={`absolute inset-[-1000%] animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
                   isDivine
                     ? "bg-[conic-gradient(from_0deg,#ff0000,#ffea00,#00ffea,#ff00e5,#ff0000)]"
                     : "bg-[conic-gradient(from_0deg,#3b82f6,#1d4ed8,#3b82f6)]"
@@ -116,7 +78,7 @@ export default function RenderSkills() {
                       : "border-blue-500/20 bg-blue-500/10 text-blue-400"
                   }`}
                 >
-                  {skill.icon}
+                  <IconComponent size={20} />{" "}
                 </div>
 
                 <div className="flex-1 space-y-2">
@@ -131,7 +93,7 @@ export default function RenderSkills() {
                             : "text-blue-400"
                         }`}
                       >
-                        {skill.type}
+                        {skill.skill_type}
                       </span>
                       <h4
                         className={`font-bold tracking-wide ${
@@ -157,7 +119,7 @@ export default function RenderSkills() {
                   </div>
 
                   <p className="text-xs leading-relaxed text-slate-400 italic opacity-80 group-hover:opacity-100 transition-opacity">
-                    &quot;{skill.desc}&quot;
+                    &quot;{skill.skill_desc}&quot;
                   </p>
 
                   <div className="h-1.5 w-full rounded-full bg-slate-900/80 p-[1px] ring-1 ring-white/5 overflow-hidden">

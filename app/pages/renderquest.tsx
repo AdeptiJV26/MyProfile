@@ -17,10 +17,12 @@ export default function RenderQuest() {
       </div>
       <div className="grid gap-6">
         {[
-          { title: "Personal Portfolio", status: "Ongoing", date: "2024" },
+          { title: "Personal Portfolio", status: "Ongoing", date: "2025" },
           { title: "FishPrawn", status: "Ongoing", date: "Present" },
           { title: "MSC Capstone E-Clearance", status: "Completed", date: "2023" },
           { title: "Tree Swipe Project", status: "Failed", date: "2022" }, 
+           { title: "Parallax Project", status: "Completed", date: "2025" }, 
+
         ].map((quest, i) => (
           <div
             key={i}

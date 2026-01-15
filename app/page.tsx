@@ -27,13 +27,13 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-primary text-slate-200 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-primary/50 text-slate-200 selection:bg-blue-500/30">
       {/* Background Dot Dot */}
       <div
         className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(var(--color-main-accent) 1px, transparent 1px)",
+            "radial-gradient(var(--color-highlight) 1px, transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
