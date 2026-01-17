@@ -1,32 +1,63 @@
+"use client";
+
 import * as Icons from "lucide-react";
 import { supabase } from "../lib/supabase";
 import React, { useState, useEffect } from "react";
 
-interface Skill {
+interface SkillCategory {
   name: string;
-  level: string;
+}
+
+interface Skill {
+  id: string;
+  name: string;
+  level: number; 
   icon: string;
-  skill_type: string;
+  skill_type: number;
   skill_desc: string;
+  skill_category: SkillCategory | null;
 }
 
 export default function RenderSkills() {
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSkills = async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("skills")
-        .select("*")
-        .returns<Skill[]>(); // 2. Tell TS to expect Skill array
-      if (data) {
-        const sortedData = [...data].sort((a, b) => 
-          parseInt(a.level .replace("%", "")) - parseInt(b.level.replace("%", "")));
+        .select(`
+          id,
+          name,
+          level,
+          icon,
+          skill_desc,
+          skill_type,
+          skill_category ( name )
+        `);
+
+      if (error) {
+        console.error("Error details:", error);
+      } else if (data) {
+        // [NEW_CODE] Flatten join array and handle numeric level
+        const formattedData = (data as any[]).map((item) => ({
+          ...item,
+          level: Number(item.level),
+          skill_category: Array.isArray(item.skill_category) 
+            ? item.skill_category[0] 
+            : item.skill_category,
+        })) as Skill[];
+
+        const sortedData = formattedData.sort((a, b) => b.level - a.level);
         setSkills(sortedData);
       }
+      setLoading(false);
     };
+
     fetchSkills();
   }, []);
+
+  if (loading) return <div className="text-slate-500 animate-pulse">Loading Skills...</div>;
 
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 pb-8">
@@ -38,16 +69,19 @@ export default function RenderSkills() {
       </div>
 
       <div className="grid grid-cols-1 gap-4">
-        {skills.map((skill, i) => {
+        {skills.map((skill) => {
           const IconComponent =
             (Icons[skill.icon as keyof typeof Icons] as React.ElementType) ||
             Icons.HelpCircle;
-          const isUltimate = skill.skill_type === "Ultimate Skill";
-          const isDivine = skill.skill_type === "Divine Manifestation";
+
+          // [NEW_CODE] Numeric comparisons for skill_type
+          const isUltimate = Number(skill.skill_type) === 5;
+          const isDivine = Number(skill.skill_type) === 6;
+          const categoryName = skill.skill_category?.name || "Unknown Type";
 
           return (
             <div
-              key={i}
+              key={skill.id}
               className={`group relative flex items-start gap-4 rounded-lg p-[1px] transition-all overflow-hidden ${
                 isDivine ? "shadow-[0_0_20px_rgba(168,85,247,0.4)]" : ""
               }`}
@@ -78,7 +112,7 @@ export default function RenderSkills() {
                       : "border-blue-500/20 bg-blue-500/10 text-blue-400"
                   }`}
                 >
-                  <IconComponent size={20} />{" "}
+                  <IconComponent size={20} />
                 </div>
 
                 <div className="flex-1 space-y-2">
@@ -93,7 +127,7 @@ export default function RenderSkills() {
                             : "text-blue-400"
                         }`}
                       >
-                        {skill.skill_type}
+                        {categoryName}
                       </span>
                       <h4
                         className={`font-bold tracking-wide ${
@@ -112,9 +146,7 @@ export default function RenderSkills() {
                           : "text-blue-500"
                       }`}
                     >
-                      {isDivine
-                        ? "LV. ∞"
-                        : `LV. ${skill.level.replace("%", "")}`}
+                      {isDivine ? "LV. ∞" : `LV. ${skill.level}`}
                     </span>
                   </div>
 
@@ -131,7 +163,8 @@ export default function RenderSkills() {
                           ? "bg-gradient-to-r from-orange-600 to-yellow-400"
                           : "bg-gradient-to-r from-blue-600 to-blue-400"
                       }`}
-                      style={{ width: isDivine ? "100%" : skill.level }}
+                      // [NEW_CODE] Use level directly as percentage
+                      style={{ width: isDivine ? "100%" : `${skill.level}%` }}
                     >
                       <div className="absolute inset-0 bg-white/20 animate-sao-progress" />
                     </div>
