@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-primary/50 text-slate-200 selection:bg-blue-500/30">
-      {/* Background Dot Dot */}
+      {/* Background Dot Styling */}
       <div
         className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
