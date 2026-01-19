@@ -18,7 +18,7 @@ interface Skill {
   skill_category: SkillCategory | null;
 }
 
-export default function RenderSkills() {
+export default function SkillsPage() {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
 

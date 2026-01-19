@@ -2,7 +2,7 @@ import {
     Mail
 } from 'lucide-react';
 
-export default function RenderSupport() {
+export default function SupportPage() {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col items-center justify-center text-center">
       <Mail size={48} className="text-blue-500 mb-4 opacity-50" />

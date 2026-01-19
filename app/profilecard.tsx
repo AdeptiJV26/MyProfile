@@ -1,9 +1,30 @@
+"use client";
 import { Shield, User, Layers, Mail, Circle } from "lucide-react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useState } from "react";
+import { supabase } from "./lib/supabase";
+import { LucideIcon } from "lucide-react";
 
 interface ProfileCardProps {
   hp: number;
+}
+
+const iconMap: Record<string, LucideIcon> = {
+  Shield: Shield,
+  Layers: Layers,
+  Mail: Mail,
+  User: User,
+};
+
+interface Skill {
+  id: string;
+  name: string;
+  level: number;
+  icon: string;
+  skill_desc: string;
+  skill_category: {
+    name: string;
+  };
 }
 
 export default function ProfileCard({ hp }: ProfileCardProps) {
@@ -12,6 +33,27 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
     if (hp > 20) return "from-yellow-600 to-yellow-400";
     return "from-red-600 to-red-400 animate-pulse";
   };
+
+  const [skills, setSkills] = useState<Skill[]>([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      // 1. Remove the extra dot after 'order'
+      const { data, error } = await supabase
+        .from("skills")
+        .select(`*, skill_category(name)`)
+        .order("level", { ascending: false });
+
+      // 2. This must be INSIDE the fetchSkills function to access 'data'
+      if (data) {
+        setSkills(data as unknown as Skill[]);
+      }
+
+      if (error) console.error(error);
+    };
+
+    fetchSkills();
+  }, []); // 3. Ensure brackets match properly
 
   const [imgError, setImgError] = useState(false);
 
@@ -22,22 +64,27 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
           <Circle size={40} className="text-blue-500" />
         </div>
 
+        {/* AVATAR CONTAINER */}
         <div className="flex flex-col items-center text-center">
-          <div className="w-32 h-32 rounded-full border-4 border-blue-500 p-1 mb-4">
+          {/* 1. Ensure this wrapper has 'relative' and 'overflow-hidden' */}
+          <div className="w-32 h-32 rounded-full border-4 border-blue-500 p-1 mb-4 relative overflow-hidden">
             <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center overflow-hidden relative">
               {!imgError ? (
                 <Image
-                  src="/img/aizen.png" // Path to your public folder
+                  src="/img/aizen.png"
                   alt="Player Avatar"
-                  fill // Makes image fill the parent container
+                  fill
+                  sizes="128px" // Optimization: tells Next.js the max width
                   className="object-cover"
                   onError={() => setImgError(true)}
+                  priority // Optimization: loads the profile pic first
                 />
               ) : (
                 <User size={64} className="text-slate-600" />
               )}
             </div>
           </div>
+
           <h2 className="text-2xl font-bold uppercase italic tracking-widest">
             Solo Player
           </h2>
@@ -61,9 +108,9 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
               </span>
             </div>
 
-            <div className="h-4 w-full bg-gray-900 border border-white/20 rounded-sm p-[2px]">
+            <div className="h-4 w-full bg-gray-900 border border-white/20 rounded-sm p-0.5">
               <div
-                className={`h-full bg-gradient-to-r transition-all duration-500 rounded-sm ${getHpColor()}`}
+                className={`h-full bg-linear-to-r transition-all duration-500 rounded-sm ${getHpColor()}`}
                 style={{ width: `${hp}%` }}
               ></div>
             </div>

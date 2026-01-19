@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react";
 
-export default function RenderQuest() {
+export default function QuestPage() {
   const statusConfig: Record<string, string> = {
     Completed: "bg-(--color-status-completed) shadow-[0_0_8px_#649de9]",
     Ongoing: "bg-(--color-status-ongoing) shadow-[0_0_8px_#f1c40f] animate-pulse",

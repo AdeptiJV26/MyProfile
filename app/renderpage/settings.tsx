@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function RenderSettings() {
+export default function SettingsPage() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

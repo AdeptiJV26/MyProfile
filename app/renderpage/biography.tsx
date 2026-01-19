@@ -1,6 +1,6 @@
 import { BicepsFlexed, Zap, Brain, Clover } from "lucide-react";
 
-export default function RenderBio() {
+export default function BioPage() {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="flex items-center gap-3 mb-8">
