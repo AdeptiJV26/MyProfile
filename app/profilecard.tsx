@@ -38,13 +38,11 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
 
   useEffect(() => {
     const fetchSkills = async () => {
-      // 1. Remove the extra dot after 'order'
       const { data, error } = await supabase
         .from("skills")
         .select(`*, skill_category(name)`)
         .order("level", { ascending: false });
 
-      // 2. This must be INSIDE the fetchSkills function to access 'data'
       if (data) {
         setSkills(data as unknown as Skill[]);
       }
@@ -53,7 +51,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
     };
 
     fetchSkills();
-  }, []); // 3. Ensure brackets match properly
+  }, []);
 
   const [imgError, setImgError] = useState(false);
 
