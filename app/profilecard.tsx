@@ -57,7 +57,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
 
   return (
     <div className="lg:col-span-4 space-y-6">
-      <div className="bg-primary/80 border border-white/10 rounded-xl p-6 relative overflow-hidden group">
+      <div className="bg-secondary/30 border border-stylish rounded-xl p-6 relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
           <Circle size={40} className="text-blue-500" />
         </div>
@@ -65,8 +65,8 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
         {/* AVATAR CONTAINER */}
         <div className="flex flex-col items-center text-center">
           {/* 1. Ensure this wrapper has 'relative' and 'overflow-hidden' */}
-          <div className="w-32 h-32 rounded-full border-4 border-blue-500 p-1 mb-4 relative overflow-hidden">
-            <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center overflow-hidden relative">
+          <div className="w-32 h-32 rounded-full border-4 border-stylish p-1 mb-4 relative overflow-hidden">
+            <div className="w-full h-full rounded-full bg-secondary/20 flex items-center justify-center overflow-hidden relative">
               {!imgError ? (
                 <Image
                   src="/img/aizen.png"
@@ -106,7 +106,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
               </span>
             </div>
 
-            <div className="h-4 w-full bg-gray-900 border border-white/20 rounded-sm p-0.5">
+            <div className="h-4 w-full secondary/20 border border-white/20 rounded-sm p-0.5">
               <div
                 className={`h-full bg-linear-to-r transition-all duration-500 rounded-sm ${getHpColor()}`}
                 style={{ width: `${hp}%` }}
@@ -115,15 +115,15 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
           </div>
 
           <div className="grid grid-cols-2 gap-4 w-full text-left">
-            <div className="bg-black/40 p-3 rounded border border-white/5">
-              <div className="text-[10px] text-slate-500 uppercase">Level</div>
-              <div className="text-xl font-bold text-blue-400 tracking-tighter">
+            <div className="bg-secondary/10 p-3 rounded-lg border border-stylish">
+              <div className="text-[10px] text-heading uppercase">Level</div>
+              <div className="text-xl font-bold text-title tracking-tighter italic">
                 28
               </div>
             </div>
-            <div className="bg-black/40 p-3 rounded border border-white/5">
-              <div className="text-[10px] text-slate-500 uppercase">Server</div>
-              <div className="text-xl font-bold text-blue-400 tracking-tighter">
+            <div className="bg-secondary/10 p-3 rounded-lg border border-stylish">
+              <div className="text-[10px] text-heading uppercase">Server</div>
+              <div className="text-xl font-bold text-title tracking-tighter italic">
                 LBRDC
               </div>
             </div>
@@ -131,11 +131,11 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
         </div>
       </div>
 
-      <div className="bg-primary/80 border border-white/10 rounded-xl p-4 flex gap-4 overflow-x-auto">
+      <div className="bg-secondary/20 border border-white/10 rounded-xl p-4 flex gap-4 overflow-x-auto">
         {[Shield, Layers, Mail].map((Icon, idx) => (
           <button
             key={idx}
-            className="flex-1 bg-white/5 p-4 rounded-lg flex items-center justify-center hover:bg-blue-600/20 hover:border-blue-500 transition-all border border-transparent"
+            className="flex-1 bg-secondary/5 p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border border-transparent"
           >
             <Icon size={20} />
           </button>

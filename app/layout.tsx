@@ -9,11 +9,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       {/* 1. ThemeProvider wraps everything so colors are available everywhere */}
-      <body className="min-h-screen bg-primary text-txt-primary transition-colors duration-300">
+      <body className="min-h-screen bg-primary/10 text-txt-primary transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           
           <div className="fixed inset-0 opacity-60 pointer-events-none" 
-               style={{ backgroundImage: "radial-gradient(var(--color-highlight) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+               style={{ backgroundImage: "radial-gradient(var(--color-accent) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
           
           <Navbar />
           
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="lg:col-span-8">
                  {/* 2. This is your biography/skills content. 
                       It is still indexed by Google even inside the Provider! */}
-                 <div className="relative bg-secondary/80 border border-borders rounded-xl p-8 min-h-[500px]">
+                 <div className="relative bg-secondary/30 border border-stylish rounded-xl p-8 min-h-[500px]">
                    {children} 
                  </div>
               </div>
