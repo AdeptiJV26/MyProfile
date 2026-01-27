@@ -31,12 +31,11 @@ export default function BioPage() {
 
   return (
     <>
-      {/* Bio Section */}
       <section className="p-6 rounded-2xl border border-stylish bg-secondary/10 backdrop-blur-md">
         <h1 className="text-2xl font-bold tracking-tight text-heading">
-          Senior Full-Stack Engineer
+          Junior Front End Dev
         </h1>
-        <p className="mt-4 text-txt leading-relaxed">
+        <p className="mt-4 text-txt/80 leading-relaxed">
           Specializing in
           <span className="text-accent font-black"> Next.js 15</span> and
           <span className="text-accent font-black"> React 19</span>. I build
@@ -45,7 +44,7 @@ export default function BioPage() {
         <div className="mt-6 flex gap-4">
           <Link
             href="/resume.pdf"
-            className="px-4 py-2 border border-stylish bg-buttons/40 backdrop-blur-md rounded-md text-sm font-black hover:bg-buttons/90 hover:border-accent transition-all"
+            className="px-4 py-2 text-txt/80 border border-stylish bg-buttons/40 backdrop-blur-md rounded-md text-sm font-black hover:bg-buttons/90 hover:border-accent hover:text-txt transition-all"
           >
             View Resume
           </Link>
@@ -64,10 +63,10 @@ export default function BioPage() {
             />
           </div>
           <div className="flex flex-col min-w-0 text-left">
-            <div className="text-xs text-titles font-black  uppercase">
+            <div className="text-xs text-heading font-black  uppercase">
               Certificates
             </div>
-            <div className="text-sm text-txt-primary font-semibold">
+            <div className="text-sm text-txt/80 font-semibold">
               {CERTIFICATIONS.length} Achievements Unlocked
             </div>
           </div>
@@ -93,12 +92,12 @@ export default function BioPage() {
               {CERTIFICATIONS.map((cert, index) => (
                 <div
                   key={index}
-                  className="flex flex-col p-4 border border-stylish bg-secondary/10 rounded-lg ml-4 relative before:content-[''] before:absolute before:-left-4 before:top-1/2 before:w-4 before:h-[1px] before:bg-primary/30 hover:bg-primary/40 transition-colors"
+                  className="flex flex-col p-4 border border-stylish bg-secondary/10 rounded-lg ml-10 relative before:content-[''] before:absolute before:-left-4 before:top-1/2 before:w-4 before:h-[1px] before:bg-primary/30 hover:bg-primary/40 transition-colors"
                 >
-                  <span className="text-sm font-bold text-txt-primary tracking-wide">
+                  <span className="text-sm font-bold text-accent tracking-wide">
                     {cert.name}
                   </span>
-                  <div className="flex justify-between text-xs text-txt-primary mt-1">
+                  <div className="flex text-txt/90 justify-between text-xs mt-1">
                     <span className="uppercase">{cert.issuer}</span>
                     <span className="font-mono">{cert.year}</span>
                   </div>
@@ -112,7 +111,7 @@ export default function BioPage() {
       <div className="animate-in fade-in slide-in-from-right-4 duration-500 mt-12">
         <div className="flex items-center gap-3 mb-8">
           <div className="h-8 w-1 bg-stylish"></div>
-          <h3 className="text-xl font-bold uppercase tracking-[0.3em]">
+          <h3 className="text-xl font-bold uppercase text-heading tracking-[0.3em]">
             Player Info
           </h3>
         </div>
@@ -145,20 +144,20 @@ export default function BioPage() {
           ].map((stat, i) => (
             <div
               key={i}
-              className="flex items-center p-4 border-2 border-stylish bg-secondary/10 rounded-lg group hover:border-highlight transition-colors"
+              className="flex items-center p-4 border-2 border-stylish bg-secondary/10 rounded-lg group hover:border-highlight hover:bg-secondary/20 transition-colors"
             >
               <div className="flex items-center gap-4 w-full">
                 <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
                   <stat.icon
                     size={20}
-                    className="text-title transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--color-highlight)] group-hover:animate-pulse"
+                    className="text-accent transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--color-highlight)] group-hover:animate-pulse"
                   />
                 </div>
                 <div className="flex flex-col min-w-0">
-                  <div className="text-xs font-black text-title uppercase truncate">
+                  <div className="text-xs font-black text-heading/90 uppercase truncate">
                     {stat.label}
                   </div>
-                  <div className="text-sm text-title font-semibold truncate">
+                  <div className="text-sm text-txt font-semibold truncate">
                     {stat.value}
                   </div>
                 </div>

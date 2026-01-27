@@ -57,13 +57,13 @@ export default function SkillsPage() {
     fetchSkills();
   }, []);
 
-  if (loading) return <div className="text-slate-500 animate-pulse">Loading Skills...</div>;
+  if (loading) return <div className="text-heading animate-pulse"></div>;
 
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500 pb-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="h-8 w-1 bg-primary shadow-[0_0_8px_#3b82f6]"></div>
-        <h3 className="text-xl font-bold uppercase tracking-[0.3em] text-slate-100">
+        <div className="h-8 w-1 bg-secondary shadow-[0_0_8px_#3b82f6]"></div>
+        <h3 className="text-xl font-bold uppercase tracking-[0.3em] text-heading">
           Skill Slots
         </h3>
       </div>
@@ -95,7 +95,7 @@ export default function SkillsPage() {
               />
 
               <div
-                className={`relative flex w-full items-start gap-4 rounded-lg border p-4 transition-all bg-black/90 ${
+                className={`relative flex w-full items-start gap-4 rounded-lg border p-4 transition-all bg-black ${
                   isUltimate
                     ? "border-orange-500/40"
                     : isDivine
