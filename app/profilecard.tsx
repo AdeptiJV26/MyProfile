@@ -47,7 +47,6 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
         setSkills(data as unknown as Skill[]);
       }
 
-      if (error) console.error(error);
     };
 
     fetchSkills();

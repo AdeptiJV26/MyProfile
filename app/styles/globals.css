@@ -54,10 +54,8 @@
       transform: translateX(100%);
     }
   }
-
   --animate-sao-load: progress-slide 3s ease-in-out infinite;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
