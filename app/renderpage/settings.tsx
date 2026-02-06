@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
@@ -57,6 +57,15 @@ export default function SettingsPage() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="flex justify-center w-full items-center">
+          <button className="min-w-24 min-h-24 bg-amber-400">
+hello
+          </button>
+          <button className="min-w-24 min-h-24 bg-red-400">
+world
+          </button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 "use client";
-import { Shield, User, Layers, Mail, Circle } from "lucide-react";
+import { Phone, User, MapPinHouse, Mail, Circle } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "./lib/supabase";
@@ -10,8 +10,8 @@ interface ProfileCardProps {
 }
 
 const iconMap: Record<string, LucideIcon> = {
-  Shield: Shield,
-  Layers: Layers,
+  Phone: Phone,
+  MapPinHouse: MapPinHouse,
   Mail: Mail,
   User: User,
 };
@@ -130,8 +130,8 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
         </div>
       </div>
 
-      <div className="bg-secondary/30 border border-white/10 rounded-xl p-4 flex gap-4 overflow-x-auto">
-        {[Shield, Layers, Mail].map((Icon, idx) => (
+      <div className="bg-secondary/30 border border-white/10 text-accent rounded-xl p-4 flex gap-4 overflow-x-auto">
+        {[Phone, MapPinHouse, Mail].map((Icon, idx) => (
           <button
             key={idx}
             className="flex-1 bg-secondary/20 p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border border-transparent"
