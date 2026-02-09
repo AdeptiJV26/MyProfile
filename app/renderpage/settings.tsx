@@ -60,12 +60,8 @@ export default function SettingsPage() {
         </div>
 
         <div className="flex justify-center w-full items-center">
-          <button className="min-w-24 min-h-24 bg-amber-400">
-hello
-          </button>
-          <button className="min-w-24 min-h-24 bg-red-400">
-world
-          </button>
+          <div className="grid grid-cols-2">
+                      </div>
         </div>
       </div>
     </div>
