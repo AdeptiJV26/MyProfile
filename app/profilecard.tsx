@@ -83,7 +83,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
           </div>
 
           <h2 className="text-2xl font-bold uppercase italic tracking-widest">
-            Solo Player
+            Solo Leveling
           </h2>
           <p className="text-accent text-sm mb-4 tracking-wider">
             Frontend Developer / UI Specialist

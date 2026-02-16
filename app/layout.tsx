@@ -1,36 +1,51 @@
-// app/layout.tsx
+import { Orbitron } from "next/font/google";
 import { ThemeProvider } from "./components/theme";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import ProfileCard from "./profilecard";
 import "./styles/globals.css";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// 1. Initialize Orbitron with the specific weight you want
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["900"],
+  variable: "--font-orbitron",
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* 1. ThemeProvider wraps everything so colors are available everywhere */}
-      <body className="min-h-screen bg-primary/10 text-txt-primary transition-colors duration-300">
+      <body
+        className={`${orbitron.variable} flex flex-col min-h-screen overflow-x-hidden bg-primary/10 text-txt-primary transition-colors duration-300`}
+      >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          
-          <div className="fixed inset-0 opacity-60 pointer-events-none" 
-               style={{ backgroundImage: "radial-gradient(var(--color-accent) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
-          
+          <div
+            className="fixed inset-0 opacity-60 pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(var(--color-accent) 1px, transparent 1px)",
+              backgroundSize: "30px 30px",
+            }}
+          />
+
           <Navbar />
-          
-          <main className="max-w-6xl mx-auto p-6 md:py-12 relative">
+
+          {/* Use flex-grow here to push the footer down */}
+          <main className="flex-grow max-w-6xl mx-auto w-full p-6 md:py-12 relative">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <ProfileCard hp={100} />
-              
               <div className="lg:col-span-8">
-                 {/* 2. This is your biography/skills content. 
-                      It is still indexed by Google even inside the Provider! */}
-                 <div className="relative bg-secondary/30 border border-stylish rounded-xl p-8 min-h-[500px]">
-                   {children} 
-                 </div>
+                <div className="relative bg-secondary/30 border border-stylish rounded-xl p-8 min-h-[500px]">
+                  {children}
+                </div>
               </div>
             </div>
           </main>
-          
+
           <Footer />
         </ThemeProvider>
       </body>

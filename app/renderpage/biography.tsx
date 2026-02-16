@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   Zap,
   ChevronDown,
-  LocateFixed
+  LocateFixed,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -41,10 +41,10 @@ export default function BioPage() {
           <span className="text-accent font-black"> React 19</span>. I build
           high-performance applications with a focus on type-safety.
         </p>
-        <div className="mt-6 flex gap-4">
+        <div className="mt-6 flex gap-4 justify-center items-center">
           <Link
             href="/resume.pdf"
-            className="px-4 py-2 text-txt/80 border border-stylish bg-buttons/40 backdrop-blur-md rounded-md text-sm font-black hover:bg-buttons/90 hover:border-accent hover:text-txt transition-all"
+            className="flex font-orbitron items-center justify-center text-center h-16 w-32 px-4 py-2 text-txt/80 border-2 border-stylish bg-buttons/40 backdrop-blur-md rounded-md hover:bg-buttons/90 hover:text-txt transition-all"
           >
             View Resume
           </Link>
