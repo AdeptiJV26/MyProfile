@@ -15,6 +15,16 @@ const Navbar = () => {
   const tabs = ["Biography", "Skills", "Quests", "Support", "Settings"];
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const fetchPlayer = async () => {
       const { data } = await supabase
         .from("player")
@@ -61,23 +71,22 @@ const Navbar = () => {
 
       {/* SAO Mobile Dropdown */}
       <div
-        className={`absolute right-0 top-20 z-50 transition-all duration-300 ease-in-out ${
+        className={`absolute right-2 top-20 z-50 transition-all duration-300 ease-in-out ${
           isOpen
             ? "opacity-100 translate-x-0"
             : "opacity-0 translate-x-10 pointer-events-none"
         }`}
       >
         {/* Set specific width here (e.g., w-48) */}
-        <div className="w-32 flex flex-col border border-stylish overflow-hidden rounded-l-2xl shadow-2xl">
+        <div className="w-32 flex flex-col gap-2 overflow-hidden shadow-2xl">
           {tabs.map((tab) => (
             <Link
               key={tab}
               href={`/x${tab.toLowerCase()}`}
-              onClick={() => setIsOpen(false)}
-              className={`p-4 text-right pr-8 uppercase tracking-widest text-[10px] bg-secondary backdrop-blur-xl border-b border-white/5 last:border-none ${
+              className={`px-4 py-2 text-right  border-2 border-white pr-8 uppercase tracking-widest rounded-sm text-[8px] bg-white/60 backdrop-blur-xl border-b last:border-none ${
                 pathname === `/x${tab.toLowerCase()}`
-                  ? "text-select bg-select/20"
-                  : "text-txt/60"
+                  ? "text-primary font-black bg-select"
+                  : "text-primary font-black"
               }`}
             >
               {tab}

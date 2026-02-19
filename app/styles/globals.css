@@ -7,8 +7,8 @@
 }
 
 :root {
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #009af3;
+  --color-background-primary: #FFFDD0;
+  --color-background-secondary: #4169E1;
   --color-text-titled: #1a1a1a;
   --color-text-style: #212a33;
   --color-button-background: #f1c40f;
@@ -16,11 +16,9 @@
   --color-highlight-hover: #f1c40f;
   --color-highlight-selected: #bf00ff;
   --color-border-theme: #f1c40f;
-
   --color-status-failed: #ff4b4b;
   --color-status-ongoing: #f1c40f;
   --color-status-completed: #2ecc71;
-
   --color-status-good: #2ecc71;
   --color-status-danger: #f1c40f;
   --color-status-critical: #c62828;

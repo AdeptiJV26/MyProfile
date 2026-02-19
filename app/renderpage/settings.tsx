@@ -19,12 +19,12 @@ export default function SettingsPage() {
     <div className="flex flex-col min-h-[500px] p-6 animate-in fade-in duration-500">
       <DayNight activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div className="flex-1">
+      <div className="flex-1 text-xs orbitron">
         {activeTab === "ui" ? (
           <div className="space-y-6 animate-in slide-in-from-left-4 duration-300">
             <h2 className="text-xl font-black italic uppercase text-blue-400 font-orbitron">System Settings</h2>
             <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
-              <span className="text-xs font-bold uppercase tracking-widest">Appearance Theme</span>
+              <span className="font-bold uppercase tracking-widest">Day / Night Toggle</span>
               <div className="flex gap-2">
                 <button onClick={() => setTheme("light")} className={`p-3 rounded-lg border ${theme === "light" ? "border-blue-500 bg-blue-500/10" : "border-white/5"}`}><Sun size={18} /></button>
                 <button onClick={() => setTheme("dark")} className={`p-3 rounded-lg border ${theme === "dark" ? "border-blue-500 bg-blue-500/10" : "border-white/5"}`}><Moon size={18} /></button>

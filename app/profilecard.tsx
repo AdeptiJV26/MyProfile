@@ -46,7 +46,6 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
       if (data) {
         setSkills(data as unknown as Skill[]);
       }
-
     };
 
     fetchSkills();
@@ -82,10 +81,10 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold uppercase italic tracking-widest">
+          <h2 className="text-2xl font-bold uppercase italic tracking-widest text-heading">
             Solo Leveling
           </h2>
-          <p className="text-accent text-sm mb-4 tracking-wider">
+          <p className="text-accent text-sm mb-4 tracking-wider text-txt">
             Frontend Developer / UI Specialist
           </p>
 
@@ -93,7 +92,7 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
 
           <div className="w-full space-y-1 mb-6">
             <div className="flex justify-between text-[10px] uppercase font-extrabold tracking-tighter">
-              <span>HP</span>
+              <span className="text-txt">HP</span>
               <span
                 className={
                   hp > 20
@@ -116,13 +115,14 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
           <div className="grid grid-cols-2 gap-4 w-full text-left">
             <div className="bg-secondary/30 p-3 rounded-lg border border-stylish">
               <div className="text-[10px] text-heading uppercase">Level</div>
-              <div className="text-xl font-bold text-title tracking-tighter italic">
+              <div className="text-xl font-bold text-heading tracking-tighter italic">
                 28
               </div>
             </div>
+
             <div className="bg-secondary/30 p-3 rounded-lg border border-stylish">
               <div className="text-[10px] text-heading uppercase">Server</div>
-              <div className="text-xl font-bold text-title tracking-tighter italic">
+              <div className="text-xl font-bold text-heading tracking-tighter italic">
                 LBRDC
               </div>
             </div>
