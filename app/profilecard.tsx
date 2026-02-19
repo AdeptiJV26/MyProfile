@@ -130,13 +130,14 @@ export default function ProfileCard({ hp }: ProfileCardProps) {
         </div>
       </div>
 
-      <div className="bg-secondary/30 border border-white/10 text-accent rounded-xl p-4 flex gap-4 overflow-x-auto">
+      <div className="bg-secondary/30 border border-white/10 text-icons rounded-xl p-4 flex gap-4 overflow-x-auto">
         {[Phone, MapPinHouse, Mail].map((Icon, idx) => (
           <button
             key={idx}
             className="flex-1 bg-secondary/20 p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border border-transparent"
           >
-            <Icon size={20} />
+            <Icon size={20} 
+            strokeWidth={2.5} />
           </button>
         ))}
       </div>

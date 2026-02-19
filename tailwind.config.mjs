@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        orbitron: ["var(--font-orbitron)", "sans-serif"],
+      },
       keyframes: {
         progress: {
           '0%': { transform: 'translateX(-100%)' },
@@ -26,3 +29,5 @@ export default {
   },
   plugins: [],
 };
+
+export default config;

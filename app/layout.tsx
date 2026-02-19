@@ -8,7 +8,7 @@ import "./styles/globals.css";
 // 1. Initialize Orbitron with the specific weight you want
 const orbitron = Orbitron({
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-orbitron",
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${orbitron.variable} flex flex-col min-h-screen overflow-x-hidden bg-primary/10 text-txt-primary transition-colors duration-300`}
+        className={`${orbitron.variable} antialiased flex flex-col min-h-screen overflow-x-hidden bg-primary/10 text-txt-primary transition-colors duration-300`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div
@@ -39,7 +39,7 @@ export default function RootLayout({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <ProfileCard hp={100} />
               <div className="lg:col-span-8">
-                <div className="relative bg-secondary/30 border border-stylish rounded-xl p-8 min-h-[500px]">
+                <div className="relative bg-secondary/20 border border-stylish rounded-xl p-8 min-h-[500px]">
                   {children}
                 </div>
               </div>

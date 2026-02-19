@@ -11,10 +11,11 @@ export default function QuestPage() {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="flex items-center gap-3 mb-8">
-        <div className="h-8 w-1 bg-blue-500"></div>
-        <h3 className="text-xl font-bold uppercase tracking-[0.3em]">
-          Campaign History
+        <div className="h-6 w-1 bg-secondary shadow-[0_0_12px_var(--color-secondary)]" />
+        <h3 className="orbitron text-xl font-black uppercase tracking-[0.4em] text-heading">
+          Quests
         </h3>
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-secondary/50 to-transparent" />
       </div>
       <div className="grid gap-6">
         {[

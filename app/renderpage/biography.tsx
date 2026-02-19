@@ -8,7 +8,7 @@ import {
   Calendar,
   ShieldCheck,
   Zap,
-  ChevronDown,
+  Cog,
   LocateFixed,
 } from "lucide-react";
 import Link from "next/link";
@@ -31,39 +31,56 @@ export default function BioPage() {
 
   return (
     <>
-      <section className="p-6 rounded-2xl border border-stylish bg-secondary/10 backdrop-blur-md">
-        <h1 className="text-2xl font-bold tracking-tight text-heading">
-          Junior Front End Dev
+      <div className="flex items-center gap-3 mb-8">
+        <div className="h-6 w-1 bg-secondary shadow-[0_0_12px_var(--color-secondary)]" />
+        <h3 className="orbitron text-xl font-black uppercase tracking-[0.4em] text-heading">
+          Bio Page
+        </h3>
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-secondary/50 to-transparent" />
+      </div>
+
+      <section className="p-6 rounded-lg border border-stylish bg-secondary/20">
+        <h1 className="flex flex-row items-center gap-4">
+          <span className="text-xl font-bold tracking-tight text-heading">
+            Junior Front End Developer
+          </span>
         </h1>
-        <p className="mt-4 text-txt/80 leading-relaxed">
+        <p className="mt-2 text-txt/80 leading-relaxed">
           Specializing in
           <span className="text-accent font-black"> Next.js 15</span> and
           <span className="text-accent font-black"> React 19</span>. I build
           high-performance applications with a focus on type-safety.
         </p>
-        <div className="mt-6 flex gap-4 justify-center items-center">
+        <div className="mt-6 flex gap-4 justify-start items-center">
           <Link
             href="/resume.pdf"
-            className="flex font-orbitron items-center justify-center text-center h-16 w-32 px-4 py-2 text-txt/80 border-2 border-stylish bg-buttons/40 backdrop-blur-md rounded-md hover:bg-buttons/90 hover:text-txt transition-all"
+            className="group relative flex items-center justify-center h-12 w-48 bg-accent/10 border-r border-b border-t border-accent/20 text-accent font-mono text-xs tracking-[0.4em] transition-all hover:bg-accent/20 hover:border-accent/90"
           >
-            View Resume
+            {/* Tech Accent: Thick Left Bar */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)] transition-shadow" />
+
+            <span className="orbitron font-black uppercase text-sm">
+              <span className="opacity-50 mr-2">/</span>
+              Resume
+            </span>
+            <div className="absolute right-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)] transition-shadow" />
           </Link>
         </div>
       </section>
 
-      <div className="mt-4 w-full">
+      <div className="mt-12 w-full">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-4 w-full p-4 border border-stylish bg-secondary/10 rounded-lg group hover:border-stylish transition-all"
+          className="flex items-center gap-4 w-full p-4 border border-b-3 border-stylish bg-secondary/40 rounded-lg group hover:border-stylish transition-all"
         >
-          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
+          <div className="shrink-0 w-10 h-10 flex items-center justify-center">
             <ShieldCheck
               size={20}
               className="transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--color-highlight)] group-hover:animate-pulse"
             />
           </div>
           <div className="flex flex-col min-w-0 text-left">
-            <div className="text-xs text-heading font-black  uppercase">
+            <div className="text-sm text-heading font-black uppercase">
               Certificates
             </div>
             <div className="text-sm text-txt/80 font-semibold">
@@ -72,10 +89,10 @@ export default function BioPage() {
           </div>
           <div
             className={`ml-auto transition-transform duration-500 ${
-              isOpen ? "rotate-180" : ""
+              isOpen ? "rotate-150" : ""
             }`}
           >
-            <ChevronDown size={20} className="text-highlight" />
+            <Cog size={28} className="text-heading" />
           </div>
         </button>
 
@@ -83,23 +100,25 @@ export default function BioPage() {
         <div
           className={`grid transition-all duration-500 ease-in-out ${
             isOpen
-              ? "grid-rows-[1fr] opacity-100 mt-2"
+              ? "grid-rows-[1fr] opacity-100 mt-1"
               : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <div className="overflow-hidden">
-            <div className="space-y-2 pb-1">
+            <div className="space-y-1 pb-1">
               {CERTIFICATIONS.map((cert, index) => (
                 <div
                   key={index}
-                  className="flex flex-col p-4 border border-stylish bg-secondary/10 rounded-lg ml-10 relative before:content-[''] before:absolute before:-left-4 before:top-1/2 before:w-4 before:h-[1px] before:bg-primary/30 hover:bg-primary/40 transition-colors"
+                  className="group flex flex-col p-3 border border-stylish bg-secondary/20 rounded-lg ml-10 relative transition-colors hover:bg-secondary/40 
+                   before:content-[''] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-[2px] before:bg-secondary/5 
+                   hover:before:bg-secondary hover:before:shadow-[0_0_8px_var(--color-secondary)] before:transition-all"
                 >
-                  <span className="text-sm font-bold text-accent tracking-wide">
+                  <span className="orbitron text-sm font-bold text-heading tracking-wide uppercase">
                     {cert.name}
                   </span>
                   <div className="flex text-txt/90 justify-between text-xs mt-1">
-                    <span className="uppercase">{cert.issuer}</span>
-                    <span className="font-mono">{cert.year}</span>
+                    <span className="uppercase font-medium">{cert.issuer}</span>
+                    <span className="font-mono text-txt">{cert.year}</span>
                   </div>
                 </div>
               ))}
@@ -110,54 +129,44 @@ export default function BioPage() {
 
       <div className="animate-in fade-in slide-in-from-right-4 duration-500 mt-12">
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-8 w-1 bg-stylish"></div>
-          <h3 className="text-xl font-bold uppercase text-heading tracking-[0.3em]">
+          <div className="h-8 w-1 bg-secondary shadow-[0_0_10px_var(--color-secondary)]"></div>
+          <h3 className="orbitron text-xl font-black uppercase text-heading tracking-[0.3em]">
             Player Info
           </h3>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid md:grid-cols-2 gap-4">
           {[
             { icon: CircleUser, label: "Name", value: "John Vince Berjuega" },
             {
               icon: MapPinHouse,
-              label: "Current Address",
+              label: "Address",
               value: "Malate, Metro Manila",
             },
-            {
-              icon: BookText,
-              label: "Educational Attainment",
-              value: "College Graduate",
-            },
-            { icon: Calendar, label: "Year Graduated", value: "2025" },
-            {
-              icon: Zap,
-              label: "Energy Source",
-              value: "Caffeine & Spaghetti Code",
-            },
-            {
-              icon: LocateFixed,
-              label: "Hobby",
-              value: "Discovering the world... online...",
-            },
+            { icon: BookText, label: "Education", value: "College Graduate" },
+            { icon: Calendar, label: "Year", value: "2025" },
+            { icon: Zap, label: "Energy", value: "Caffeine & Spaghetti Code" },
+            { icon: LocateFixed, label: "Hobby", value: "Exploring... online" },
           ].map((stat, i) => (
             <div
               key={i}
-              className="flex items-center p-4 border-2 border-stylish bg-secondary/10 rounded-lg group hover:border-highlight hover:bg-secondary/20 transition-colors"
+              className="group relative flex items-center p-4 border-l-4 border-secondary/40 bg-secondary/20 transition-all duration-300 hover:border-secondary hover:bg-secondary/50"
             >
+              {/* Top-right corner accent */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary/10 group-hover:border-accent group-hover:drop-shadow-[0_0_8px_var(--color-secondary)]" />
+
               <div className="flex items-center gap-4 w-full">
-                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
+                <div className="shrink-0">
                   <stat.icon
                     size={20}
-                    className="text-accent transition-all duration-300 group-hover:drop-shadow-[0_0_8px_var(--color-highlight)] group-hover:animate-pulse"
+                    className="text-icons transition-all duration-300 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_var(--color-accent)]"
                   />
                 </div>
                 <div className="flex flex-col min-w-0">
-                  <div className="text-xs font-black text-heading/90 uppercase truncate">
-                    {stat.label}
+                  <div className="orbitron text-[12px] text-heading/90 font-bold uppercase tracking-widest">
+                    [ {stat.label} ]
                   </div>
-                  <div className="text-sm text-txt font-semibold truncate">
+                  <div className="text-md text-txt font-semibold truncate transition-colors">
                     {stat.value}
                   </div>
                 </div>

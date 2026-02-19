@@ -106,7 +106,7 @@ const NavLink = ({ tab, pathname }: { tab: string; pathname: string }) => {
     <Link
       href={href}
       className={`relative text-[10px] lg:text-md uppercase tracking-widest py-1 transition-all ${
-        isActive ? "text-select" : "text-txt/60 hover:text-white"
+        isActive ? "text-select font-black" : "text-heading/80 hover:text-accent font-bold"
       }`}
     >
       <span

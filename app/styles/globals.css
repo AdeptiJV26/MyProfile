@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
-.font-orbitron {
-  font-family: var(--font-orbitron), sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.05em; /* Optional: Orbitron looks better with a little space */
-}
-
 :root {
-  --color-background-primary: #FFFDD0;
-  --color-background-secondary: #4169E1;
+  --color-background-primary: #d9f0f8;
+  --color-background-secondary: #009af3;
   --color-text-titled: #1a1a1a;
   --color-text-style: #212a33;
+  --color-icon-theme: #bf00ff;
   --color-button-background: #f1c40f;
   --color-accent-theme: #bf00ff;
   --color-highlight-hover: #f1c40f;
   --color-highlight-selected: #bf00ff;
-  --color-border-theme: #f1c40f;
+  --color-border-theme: #26f10f;
+
+  
   --color-status-failed: #ff4b4b;
   --color-status-ongoing: #f1c40f;
   --color-status-completed: #2ecc71;
@@ -26,14 +23,14 @@
 
 .dark {
   --color-background-primary: #06090f;
-  --color-background-secondary: #2ad4eb;
+  --color-background-secondary: #16c1d8;
   --color-text-titled: #d9f0f8;
   --color-text-style: #e0f7ff;
+  --color-icon-theme: #f1c40f;
   --color-button-background: #00d4ff;
   --color-accent-theme: #ffd634;
   --color-highlight-hover: #00d4ff;
   --color-highlight-selected: #ffd634;
-
   --color-border-theme: #00d4ff;
 }
 
@@ -43,6 +40,7 @@
   --color-accent: var(--color-accent-theme);
   --color-txt: var(--color-text-style);
   --color-heading: var(--color-text-titled);
+  --color-icons: var(--color-icon-theme);
   --color-stylish: var(--color-border-theme);
   --color-hover: var(--color-highlight-hover);
   --color-select: var(--color-highlight-selected);
@@ -65,5 +63,5 @@ body {
 }
 
 .orbitron {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-orbitron);
 }
