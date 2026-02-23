@@ -36,7 +36,7 @@ export default function BioPage() {
         <h3 className="orbitron text-xl font-black uppercase tracking-[0.4em] text-heading">
           Bio Page
         </h3>
-        <div className="flex-1 h-[1px] bg-gradient-to-r from-secondary/50 to-transparent" />
+        <div className="flex-1 h-px bg-linear-to-r from-secondary/50 to-transparent" />
       </div>
 
       <section className="p-6 rounded-lg border border-stylish bg-secondary/20">
@@ -110,7 +110,7 @@ export default function BioPage() {
                 <div
                   key={index}
                   className="group flex flex-col p-3 border border-stylish bg-secondary/20 rounded-lg ml-10 relative transition-colors hover:bg-secondary/40 
-                   before:content-[''] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-[2px] before:bg-secondary/5 
+                   before:content-[''] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:h.05 before:bg-secondary/5 
                    hover:before:bg-secondary hover:before:shadow-[0_0_8px_var(--color-secondary)] before:transition-all"
                 >
                   <span className="orbitron text-sm font-bold text-heading tracking-wide uppercase">

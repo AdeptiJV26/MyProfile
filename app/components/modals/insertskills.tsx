@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { Plus, X } from "lucide-react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "@/app/lib/supabase";
+
 
 export default function AddSkillModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function AddSkillModal() {
 
       {/* Modal Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
           <div className="w-full max-w-md rounded-lg border border-white/10 bg-slate-900 p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-bold text-white uppercase tracking-wider">New Skill Slot</h3>
