@@ -15,7 +15,7 @@ export default function QuestPage() {
         <h3 className="orbitron text-xl font-black uppercase tracking-[0.4em] text-heading">
           Quests
         </h3>
-        <div className="flex-1 h-[1px] bg-gradient-to-r from-secondary/50 to-transparent" />
+        <div className="flex-1 h-px bg-linear-to-r from-secondary/50 to-transparent" />
       </div>
       <div className="grid gap-6">
         {[
