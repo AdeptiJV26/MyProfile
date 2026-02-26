@@ -54,11 +54,11 @@ export default function BioPage() {
         <div className="mt-6 flex gap-4 justify-start items-center">
           <Link
             href="/xresume/" // Point to your new themed route
-            className="group relative flex items-center justify-center h-12 w-48 bg-accent/10 border-r border-b border-t border-accent/20 text-accent font-mono text-xs tracking-[0.4em] transition-all hover:bg-accent/20 hover:border-accent/90"
+            className="group relative flex items-center justify-center h-12 w-60 bg-accent/10 border-r border-b border-t border-accent/20 text-accent font-mono text-xs tracking-[0.4em] transition-all hover:bg-accent/20 hover:border-accent/90"
           >
             <div className="absolute left-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)]" />
 
-            <span className="orbitron font-black uppercase text-sm w-36 text-center">
+            <span className="orbitron font-black uppercase whitespace-nowrap text-xs w-full text-center lg:text-md">
               <span className="opacity-50"></span>
              / View Resume
             </span>
