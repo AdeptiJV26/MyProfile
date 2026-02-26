@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SectionItem } from "./sectionlist";
 import ActiveView from "./activeview";
-import ProfName from "./profilename"; // Imported from your separate file
+import ProfName from "./profilename"; 
 
 export const DBpanel = () => {
   const [activeView, setActiveView] = useState<string | null>(null);

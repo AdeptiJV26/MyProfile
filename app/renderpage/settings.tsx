@@ -57,7 +57,6 @@ export default function SettingsPage() {
                     </button>
                   </>
                 ) : (
-                  /* Skeleton/Placeholder to prevent layout shift during load */
                   <div className="h-11.5 w-24 bg-white/5 rounded-lg animate-pulse" />
                 )}
               </div>

@@ -2,12 +2,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import * as Icons from "lucide-react";
-import { Settings2 } from "lucide-react";
+import { Settings2, Plus } from "lucide-react"; // Added Plus
 import { EditSkillModal } from "./modals/editskillsmodal";
 
-
 interface Skill {
-  id: string | number;
+  id?: string | number; // Made ID optional for new skills
   name: string;
   level: number;
   skill_desc: string;
@@ -17,6 +16,7 @@ interface Skill {
 export const SkillList = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const fetchSkills = async () => {
     const { data } = await supabase.from("skills").select("*");
@@ -25,8 +25,28 @@ export const SkillList = () => {
 
   useEffect(() => { fetchSkills(); }, []);
 
+  // Default state for a new skill
+  const emptySkill: Skill = {
+    name: "",
+    level: 0,
+    skill_desc: "",
+    icon: "Zap",
+  };
+
   return (
     <div className="flex flex-col gap-4">
+      {/* 1. Add Skill Button - SAO Styled */}
+      <button 
+        onClick={() => setIsAddModalOpen(true)}
+        className="group relative flex items-center justify-center p-3 border border-dashed border-accent/40 bg-accent/5 hover:bg-accent/10 transition-all rounded-lg mb-2"
+      >
+        <div className="flex items-center gap-2 orbitron text-xs font-black tracking-[0.2em] text-accent/60 group-hover:text-accent">
+          <Plus size={16} />
+          [ ADD_NEW_SKILL_SLOT ]
+        </div>
+      </button>
+
+      {/* 2. Existing Skill List */}
       {skills.map((skill) => {
         const IconComponent = (Icons[skill.icon] as React.ElementType) || Icons.HelpCircle;
         return (
@@ -48,10 +68,14 @@ export const SkillList = () => {
         );
       })}
 
-      {selectedSkill && (
+      {/* 3. Reusing the Modal for Edit OR Add */}
+      {(selectedSkill || isAddModalOpen) && (
         <EditSkillModal 
-          skill={selectedSkill} 
-          onClose={() => setSelectedSkill(null)} 
+          skill={selectedSkill || emptySkill} // Pass empty skill if adding
+          onClose={() => {
+            setSelectedSkill(null);
+            setIsAddModalOpen(false);
+          }} 
           onRefresh={fetchSkills}
         />
       )}

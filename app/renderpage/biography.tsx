@@ -32,14 +32,14 @@ export default function BioPage() {
   return (
     <>
       <div className="flex items-center gap-3 mb-8">
-        <div className="h-6 w-1 bg-secondary shadow-[0_0_12px_var(--color-secondary)]" />
+        <div className="h-6 w-1 bg-accent shadow-[0_0_12px_var(--color-accent)]" />
         <h3 className="orbitron text-xl font-black uppercase tracking-[0.4em] text-heading">
           Bio Page
         </h3>
-        <div className="flex-1 h-px bg-linear-to-r from-secondary/50 to-transparent" />
+        <div className="flex-1 h-1 bg-linear-to-r from-accent/50 to-transparent" />
       </div>
 
-      <section className="p-6 rounded-lg border border-stylish bg-secondary/20">
+      <section className="p-6 rounded-lg border border-stylish bg-secondary/40">
         <h1 className="flex flex-row items-center gap-4">
           <span className="text-xl font-bold tracking-tight text-heading">
             Junior Front End Developer
@@ -53,17 +53,17 @@ export default function BioPage() {
         </p>
         <div className="mt-6 flex gap-4 justify-start items-center">
           <Link
-            href="/resume.pdf"
+            href="/xresume/" // Point to your new themed route
             className="group relative flex items-center justify-center h-12 w-48 bg-accent/10 border-r border-b border-t border-accent/20 text-accent font-mono text-xs tracking-[0.4em] transition-all hover:bg-accent/20 hover:border-accent/90"
           >
-            {/* Tech Accent: Thick Left Bar */}
-            <div className="absolute left-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)] transition-shadow" />
+            <div className="absolute left-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)]" />
 
-            <span className="orbitron font-black uppercase text-sm">
-              <span className="opacity-50 mr-2">/</span>
-              Resume
+            <span className="orbitron font-black uppercase text-sm w-36 text-center">
+              <span className="opacity-50"></span>
+             / View Resume
             </span>
-            <div className="absolute right-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)] transition-shadow" />
+
+            <div className="absolute right-0 top-0 h-full w-1 bg-accent group-hover:shadow-[0_0_8px_var(--color-accent)]" />
           </Link>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function BioPage() {
       <div className="mt-12 w-full">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-4 w-full p-4 border border-b-3 border-stylish bg-secondary/40 rounded-lg group hover:border-stylish transition-all"
+          className="flex items-center gap-4 w-full p-4 border border-b-3 border-accent bg-secondary/40 rounded-lg group transition-all"
         >
           <div className="shrink-0 w-10 h-10 flex items-center justify-center">
             <ShieldCheck
@@ -109,7 +109,7 @@ export default function BioPage() {
               {CERTIFICATIONS.map((cert, index) => (
                 <div
                   key={index}
-                  className="group flex flex-col p-3 border border-stylish bg-secondary/20 rounded-lg ml-10 relative transition-colors hover:bg-secondary/40 
+                  className="group flex flex-col p-3 border border-accent bg-secondary/40 rounded-lg ml-10 relative transition-colors hover:bg-secondary/40 
                    before:content-[''] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:h.05 before:bg-secondary/5 
                    hover:before:bg-secondary hover:before:shadow-[0_0_8px_var(--color-secondary)] before:transition-all"
                 >
@@ -129,7 +129,7 @@ export default function BioPage() {
 
       <div className="animate-in fade-in slide-in-from-right-4 duration-500 mt-12">
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-8 w-1 bg-secondary shadow-[0_0_10px_var(--color-secondary)]"></div>
+          <div className="h-8 w-1 bg-accent shadow-[0_0_10px_var(--color-accent)]"></div>
           <h3 className="orbitron text-xl font-black uppercase text-heading tracking-[0.3em]">
             Player Info
           </h3>
@@ -150,11 +150,10 @@ export default function BioPage() {
           ].map((stat, i) => (
             <div
               key={i}
-              className="group relative flex items-center p-4 border-l-4 border-secondary/40 bg-secondary/20 transition-all duration-300 hover:border-secondary hover:bg-secondary/50"
+              className="group relative flex items-center p-4 border-l-4 border-accent bg-secondary/40 transition-all duration-300 hover:border-accent hover:bg-secondary/60"
             >
-              {/* Top-right corner accent */}
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary/10 group-hover:border-accent group-hover:drop-shadow-[0_0_8px_var(--color-secondary)]" />
-
+              {/* Top-right corner */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-3 border-r-3 border-accent/30 transition-all duration-300 group-hover:border-accent group-hover:drop-shadow-[0_0_12px_var(--color-secondary)] z-10" />{" "}
               <div className="flex items-center gap-4 w-full">
                 <div className="shrink-0">
                   <stat.icon

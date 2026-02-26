@@ -14,7 +14,7 @@ export default function ProfName() {
   }, []);
 
   return (
-    <button className="bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/50 text-yellow-400 px-4 py-2 rounded-lg flex items-center gap-3">
+    <button className="bg-secondary/30 hover:bg-secondary/60 border tracking-widest text-sm border-accent text-heading px-4 py-2 rounded-lg flex items-center gap-3">
       <span className="font-bold uppercase tracking-tighter">{username}</span>
       <Wrench size={14} />
     </button>

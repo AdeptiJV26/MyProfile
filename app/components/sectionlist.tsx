@@ -8,7 +8,7 @@ export const SectionItem = ({ label, onClick }: SectionItemProps) => (
     <div className="font-orbitron text-txt">{label}</div>
     <button
       onClick={onClick}
-      className="min-w-20 min-h-8 bg-blue-600/20 hover:bg-blue-600/40 border border-secondary rounded-lg font-orbitron text-xs"
+      className="min-w-20 min-h-8 bg-secondary/30 hover:bg-secondary/60 border border-secondary rounded-lg font-orbitron text-sm font-black"
     >
       VIEW
     </button>

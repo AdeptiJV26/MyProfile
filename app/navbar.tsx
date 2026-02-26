@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-secondary/30 backdrop-blur-md border-b border-white/10 p-4">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
+      <div className="w-full lg:px-32 mx-auto flex justify-between items-center">
         {/* Profile Section */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center border-2 border-white/20">

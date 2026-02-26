@@ -35,11 +35,18 @@ export default function RootLayout({
           <Navbar />
 
           {/* Use flex-grow here to push the footer down */}
-          <main className="flex-grow max-w-6xl mx-auto w-full p-6 md:py-12 relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <ProfileCard hp={100} />
-              <div className="lg:col-span-8">
-                <div className="relative bg-secondary/20 border border-stylish rounded-xl p-8 min-h-[500px]">
+          <main className="flex-grow mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 md:py-12 relative">
+            {/* 2. Grid: 1 column on mobile, 2 columns on tablet, 12-col layout on desktop */}
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 w-full overflow-hidden">
+              {/* Left Column */}
+              <div className="xl:col-span-4 w-full">
+                <ProfileCard />
+              </div>
+
+              {/* Right Column */}
+              <div className="xl:col-span-8 w-full">
+                {/* Ensure this div has the same outer dimensions as the ProfileCard container */}
+                <div className="relative bg-secondary/20 border border-stylish rounded-xl p-6 md:p-8 min-h-[500px] w-full">
                   {children}
                 </div>
               </div>
