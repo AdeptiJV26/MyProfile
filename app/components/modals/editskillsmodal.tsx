@@ -98,7 +98,7 @@ export const EditSkillModal = ({ skill, onClose, onRefresh }: {
             </div>
             
             <div>
-              <label className="text-heading font-black block mb-1 uppercase text-accent">Proficiency Level: {formData.level}%</label>
+              <label className="text-heading font-black block mb-1 uppercase">Proficiency Level: {formData.level}%</label>
               <input 
                 type="range" min="0" max="100" className="w-full accent-accent h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer"
                 value={formData.level}

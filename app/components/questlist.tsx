@@ -81,7 +81,7 @@ export const QuestList = () => {
                     </span>
                   </div>
                   
-                  <div className="h-3 w-[1px] bg-white/10" /> {/* Vertical Separator */}
+                  <div className="h-3 w-px bg-white/10" /> {/* Vertical Separator */}
                   
                   <span className="text-[10px] text-txt/40 font-mono tracking-tighter uppercase whitespace-nowrap">
                     {quest.date_start} {quest.date_end ? `// ${quest.date_end}` : ">> PRESENT"}
