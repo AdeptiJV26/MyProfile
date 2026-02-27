@@ -60,14 +60,13 @@ export default function ProfileCard() {
           </div>
 
           <h2 className="orbitron text-2xl font-bold uppercase italic tracking-widest text-heading">
-            lord aizen
+            Sung Il Wan
           </h2>
           <p className="text-heading text-[10px] mb-6 tracking-[0.3em] uppercase opacity-80">
             Front End Developer / UI Specialist{" "}
           </p>
 
-          <p className="h-1 w-full bg-accent/20 mb-10"></p>
-
+          <p className="h-1 w-full bg-accent/20 mb-10 transition-all duration-300 group-hover:bg-accent/80 group-hover:shadow-[0_0_15px_rgba(var(--color-accent-rgb),0.5)]"></p>
           {/* HEXAGON SKILL DATA SHEET */}
           <div className="relative w-full aspect-square max-w-[220px] mb-8 flex items-center justify-center">
             {/* Stat Labels & Icons */}
@@ -131,7 +130,7 @@ export default function ProfileCard() {
                   points="50,5 90,25 90,75 50,95 10,75 10,25"
                   fill="transparent"
                   stroke="var(--color-accent)"
-                  strokeOpacity="0.5"
+                  strokeOpacity="0.1"
                   strokeWidth="0.5"
                   transform={`scale(${r})`}
                   style={{
@@ -164,7 +163,8 @@ export default function ProfileCard() {
                   ${50 - stats.curiosity * 0.4},${50 + stats.curiosity * 0.25} 
                   ${50 - stats.tenacity * 0.4},${50 - stats.tenacity * 0.25}
                 `}
-                className="fill-accent/20 stroke-accent/60 stroke-[1.5] transition-all duration-1000"
+                className="fill-accent/20 stroke-accent/30 stroke-[1.5] transition-all duration-700 
+             group-hover:fill-accent/50 group-hover:stroke-accent group-hover:drop-shadow-[0_0_8px_rgba(var(--color-accent-rgb),0.6)]"
                 style={{ filter: "url(#web-grid)" }}
               />
             </svg>
