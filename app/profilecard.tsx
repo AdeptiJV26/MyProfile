@@ -100,7 +100,7 @@ export default function ProfileCard() {
               viewBox="0 0 100 100"
               className="w-full h-full drop-shadow-[0_0_10px_rgba(var(--color-accent-rgb),0.3)]"
             >
-              {/* Grid Web Pattern */}
+              {/* Grid Web Pattern-hamnida */}
               <defs>
                 <pattern
                   id="web-grid"
@@ -124,7 +124,7 @@ export default function ProfileCard() {
                 </mask>
               </defs>
 
-              {/* Background Hexagon Rings */}
+              {/* Background Hexagon Rings-hamnida */}
               {[1, 0.8, 0.6, 0.4, 0.2].map((r, i) => (
                 <polygon
                   key={i}
@@ -134,7 +134,10 @@ export default function ProfileCard() {
                   strokeOpacity="0.5"
                   strokeWidth="0.5"
                   transform={`scale(${r})`}
-                  transform-origin="50 50"
+                  style={{
+                    transform: `scale(${r})`,
+                    transformOrigin: "center",
+                  }}
                 />
               ))}
 
@@ -149,7 +152,7 @@ export default function ProfileCard() {
                 <line x1="90" y1="75" x2="10" y2="25" />
               </g>
 
-              {/* The Data Polygon */}
+              {/* The Data Polygon-hamnida */}
               <polygon
                 points={`
                   50,${50 - stats.frontEnd * 0.45} 
@@ -189,11 +192,11 @@ export default function ProfileCard() {
         </div>
       </div>
 
-      <div className="bg-secondary/30 border border-white/10 text-icons rounded-xl p-4 flex gap-4 overflow-x-auto">
+      <div className="bg-secondary/30 border border-stylish text-icons rounded-xl p-4 flex gap-4 overflow-x-auto">
         {[Phone, MapPinHouse, Mail].map((Icon, idx) => (
           <button
             key={idx}
-            className="flex-1 bg-secondary/20 p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border border-transparent group"
+            className="flex-1 bg-secondary/20 border-stylish p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border group"
           >
             <Icon
               size={20}

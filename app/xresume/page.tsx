@@ -28,15 +28,15 @@ export default function ResumePage() {
           <div className="flex justify-between items-center p-3 mb-2 border-b border-stylish/30">
             <div className="flex items-center gap-2">
               <FileText size={16} className="text-accent" />
-              <span className="orbitron text-[10px] uppercase font-black tracking-widest text-heading/60">
-                Data_Log // Resume
+              <span className="orbitron uppercase text-[10px] uppercase font-black tracking-widest text-heading/60">
+                Data Log // Resume
               </span>
             </div>
             <div className="flex gap-4">
               <a
                 href={resumeUrl}
                 download
-                className="text-heading/40 hover:text-accent transition-colors"
+                className="text-heading/60 hover:text-accent transition-colors"
               >
                 <Download size={18} />
               </a>
@@ -44,7 +44,7 @@ export default function ResumePage() {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-heading/40 hover:text-accent transition-colors"
+                className="text-heading/60 hover:text-accent transition-colors"
               >
                 <ExternalLink size={18} />
               </a>

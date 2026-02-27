@@ -31,7 +31,7 @@ export default function QuestPage() {
         ].map((quest, i) => (
           <div
             key={i}
-            className="group orbitron uppercase flex items-center justify-between p-5 border border-accent bg-secondary/40 rounded-xl hover:bg-secondary/80 transition-all cursor-pointer"
+            className="group uppercase flex items-center justify-between p-5 border border-stylish bg-secondary/40 rounded-xl hover:bg-secondary/80 transition-all cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <div
@@ -40,15 +40,15 @@ export default function QuestPage() {
                 }`}
               ></div>
               <div>
-                <div className="font-bold tracking-tight text-lg">
+                <div className="orbitron font-bold tracking-tight text-lg">
                   {quest.title}
                 </div>
-                <div className="text-xs text-txt/90 font-mono uppercase tracking-tighter">
+                <div className="text-xs text-heading font-mono uppercase tracking-tighter">
                   Status: {quest.status} • {quest.date}
                 </div>
               </div>
             </div>
-            <ChevronRight className="text-txt/90 group-hover:text-blue-500 transition-colors" />
+            <ChevronRight className="text-txt group-hover:text-blue-500 transition-colors" />
           </div>
         ))}
       </div>

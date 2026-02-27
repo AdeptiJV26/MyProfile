@@ -30,7 +30,7 @@ export const DBpanel = () => {
       <div className="flex flex-col w-full bg-secondary/10 border-2 border-stylish gap-3 rounded-[5px_30px_5px_30px] p-6">
         {/* Profile Header */}
         <div className="flex flex-row w-full items-center justify-between min-h-10 border-b border-white/5 pb-3">
-          <div className="font-orbitron text-heading">Profile</div>
+          <div className="orbitron text-heading font-black">Profile</div>
           <ProfName />
         </div>
 
