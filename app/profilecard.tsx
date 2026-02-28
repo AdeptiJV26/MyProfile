@@ -10,24 +10,41 @@ import {
   ShieldAlert,
   Eye,
   Rocket,
-  Code2,
+  Code2, ChevronDown
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "./lib/supabase";
 
+
+interface ContactMethod {
+  icon: any;
+  name: string;
+  comms: string;
+}
+
+
 export default function ProfileCard() {
   const [imgError, setImgError] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Stats for the Hexagon (0 to 100)
   const stats = {
-    frontEnd: 70, // CRI
-    flexibility: 85, // ADP
-    backEnd: 25, // STR
-    Troubleshooting: 85, // VIS
-    curiosity: 80, // SPD
-    tenacity: 65, // LOG
+    frontend: 70,
+    flexibility: 85,
+    backend: 25,
+    troubleshooting: 85,
+    curiosity: 80,
+    tenacity: 65,
   };
+  
+
+
+  const contactInfo: ContactMethod[] = [
+    { icon: Phone, label: "Phone", value: "+123 456 789" },
+    { icon: Mail, label: "Email", value: "sung@example.com" },
+    { icon: MapPinHouse, label: "Location", value: "LBRDC Server" },
+  ];
 
   return (
     <div className="lg:col-span-4 space-y-6">
@@ -84,7 +101,7 @@ export default function ProfileCard() {
             </div>
             <div className="absolute -bottom-4 flex flex-col items-center text-accent">
               <Eye size={14} />
-              <span className="text-[8px] font-bold">Troubleshooting</span>
+              <span className="text-[8px] font-bold">troubleshooting</span>
             </div>
             <div className="absolute bottom-1/4 -left-6 flex flex-col items-center text-accent">
               <Rocket size={14} />
@@ -154,12 +171,12 @@ export default function ProfileCard() {
               {/* The Data Polygon-hamnida */}
               <polygon
                 points={`
-                  50,${50 - stats.frontEnd * 0.45} 
+                  50,${50 - stats.frontend * 0.45} 
                   ${50 + stats.flexibility * 0.4},${
                   50 - stats.flexibility * 0.25
                 } 
-                  ${50 + stats.backEnd * 0.4},${50 + stats.backEnd * 0.25} 
-                  50,${50 + stats.Troubleshooting * 0.45} 
+                  ${50 + stats.backend * 0.4},${50 + stats.backend * 0.25} 
+                  50,${50 + stats.troubleshooting * 0.45} 
                   ${50 - stats.curiosity * 0.4},${50 + stats.curiosity * 0.25} 
                   ${50 - stats.tenacity * 0.4},${50 - stats.tenacity * 0.25}
                 `}
@@ -192,19 +209,42 @@ export default function ProfileCard() {
         </div>
       </div>
 
-      <div className="bg-secondary/30 border border-stylish text-icons rounded-xl p-4 flex gap-4 overflow-x-auto">
-        {[Phone, MapPinHouse, Mail].map((Icon, idx) => (
-          <button
-            key={idx}
-            className="flex-1 bg-secondary/20 border-stylish p-4 rounded-lg flex items-center justify-center hover:bg-secondary hover:border-stylish transition-all border group"
-          >
-            <Icon
-              size={20}
-              strokeWidth={2.5}
-              className="group-hover:text-accent transition-colors"
-            />
-          </button>
-        ))}
+      <div className="relative">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full bg-secondary/30 border border-stylish text-heading rounded-xl p-4 flex items-center justify-between hover:bg-secondary/50 transition-all orbitron text-xs tracking-widest uppercase"
+        >
+          <span>Contact Me</span>
+          <ChevronDown
+            className={`transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            size={18}
+          />
+        </button>
+
+        <div
+          className={`mt-2 space-y-2 overflow-hidden transition-all duration-300 ${
+            isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          {contactInfo.map((info, idx) => (
+            <div
+              key={idx}
+              className="bg-secondary/20 border border-stylish p-3 rounded-lg flex items-center gap-4 text-heading/80 hover:text-accent transition-colors"
+            >
+              <info.icon size={18} className="text-accent" />
+              <div className="flex flex-col">
+                <span className="text-[8px] uppercase opacity-50">
+                  {info.label}
+                </span>
+                <span className="text-sm font-medium tracking-tight">
+                  {info.value}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
