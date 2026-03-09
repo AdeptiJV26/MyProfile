@@ -10,7 +10,7 @@ export default function ProfName() {
       const { data } = await supabase.from("player").select("username").single();
       if (data) setUsername(data.username);
     };
-    fetchPlayer();
+    fetchPlayer();  
   }, []);
 
   return (
