@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Phone,
   User,
@@ -10,23 +11,29 @@ import {
   ShieldAlert,
   Eye,
   Rocket,
-  Code2, ChevronDown
+  Code2,
+  ChevronDown,
+  LucideIcon,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "./lib/supabase";
 
-
 interface ContactMethod {
-  icon: any;
-  name: string;
-  comms: string;
+  icon: LucideIcon;
+  label: string;
+  value: string;
 }
 
+interface DataSheet {
+  id: string | number;
+  firstname: string;
+}
 
 export default function ProfileCard() {
   const [imgError, setImgError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [datasheet, setDatasheet] = useState<DataSheet[]>([]);
 
   // Stats for the Hexagon (0 to 100)
   const stats = {
@@ -37,14 +44,25 @@ export default function ProfileCard() {
     curiosity: 80,
     tenacity: 65,
   };
-  
-
 
   const contactInfo: ContactMethod[] = [
     { icon: Phone, label: "Phone", value: "+123 456 789" },
     { icon: Mail, label: "Email", value: "sung@example.com" },
     { icon: MapPinHouse, label: "Location", value: "LBRDC Server" },
   ];
+
+ const FirstName = datasheet.length > 0 ? datasheet[0].firstname : "Syncing...";
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await supabase.from("datasheet").select("*");
+
+      if (!error && data) {
+        setDatasheet(data);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="lg:col-span-4 space-y-6">
@@ -77,7 +95,7 @@ export default function ProfileCard() {
           </div>
 
           <h2 className="orbitron text-2xl font-bold uppercase italic tracking-widest text-heading">
-            Sung Il Wan
+            {FirstName}
           </h2>
           <p className="text-heading text-[10px] mb-6 tracking-[0.3em] uppercase opacity-80">
             Front End Developer / UI Specialist{" "}
@@ -173,8 +191,8 @@ export default function ProfileCard() {
                 points={`
                   50,${50 - stats.frontend * 0.45} 
                   ${50 + stats.flexibility * 0.4},${
-                  50 - stats.flexibility * 0.25
-                } 
+                    50 - stats.flexibility * 0.25
+                  } 
                   ${50 + stats.backend * 0.4},${50 + stats.backend * 0.25} 
                   50,${50 + stats.troubleshooting * 0.45} 
                   ${50 - stats.curiosity * 0.4},${50 + stats.curiosity * 0.25} 

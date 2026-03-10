@@ -68,11 +68,11 @@ export default function SkillsPage() {
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-txt/70 font-medium italic leading-relaxed border-l-2 border-accent/20 pl-3">
+                  <p className="text-xs text-heading/60 font-medium italic leading-relaxed border-l-2 border-accent/20 pl-3">
                     &quot;{skill.skill_desc}&quot;
                   </p>
 
-                  <div className="relative h-2 w-full bg-black/40 rounded-none overflow-hidden border border-white/5">
+                  <div className="relative h-2 w-full bg-secondary/40 rounded-none overflow-hidden border border-stylish720 MANGGA ST. NAPICO MANGGAHAN PASIG CITY">
                     <div
                       className="h-full bg-linear-to-r from-accent/50 to-accent relative transition-all duration-1000 ease-out shadow-[0_0_10px_var(--color-accent)]"
                       style={{ width: `${skill.level}%` }}
